@@ -4,7 +4,7 @@
 
 using namespace std;
 
-#include "stack.cpp"
+#include "stack.h"
 #include "queue.cpp"
 #include "list.cpp"
 #include "double_linked_list.cpp"
