@@ -12,10 +12,10 @@ class Stack {
         // Структура хранит информационное поле и указатель на следующий элемент стека
         struct Element {
             item data;
-            Element *next;
+            Element *prev;
 
             Element (item obj, Element *link):
-                data(obj), next(link) {}
+                data(obj), prev(link) {}
         };
 
         Element *head; // указатель на верхний элемент
@@ -25,15 +25,12 @@ class Stack {
 
         // деструктор (очищает стек, начиная с головы)
         ~Stack() {
-            if (head != NULL)
-                {
-                    do {
-                        Element *cur = head;
-                        head = head->next;
+            while (head != NULL) {
+                Element *cur = head;
+                head = head->prev;
 
-                        delete cur;
-                    } while (head != NULL);
-                }
+                delete cur;
+            }
         }
 
         // проверка на пустоту
@@ -53,11 +50,13 @@ class Stack {
                 if (empty() )
                         throw "StackException: get - stack is empty!";
 
-                Element *cur = head;
                 item obj = head->data;
-                head = head->next;
+
+                Element *cur = head;
+                head = head->prev;
 
                 delete cur;
+
                 return obj;
             }
 
@@ -83,19 +82,19 @@ class Stack {
 
         // вывести на экран содержимое стека
         void show() {
-            for (Element *cur = head; cur != NULL; cur = cur->next)
+            for (Element *cur = head; cur != NULL; cur = cur->prev)
                     std::cout << cur->data << " ";
         }
 
         // вывести в файл содержимое стека
         void print(std::ofstream &out) {
-            for (Element *cur = head; cur != NULL; cur = cur->next)
+            for (Element *cur = head; cur != NULL; cur = cur->prev)
                     out << cur->data << " ";
         }
 
-        // проверка, есть ли в стеке элемент
+        // проверка на существование элемента в стеке
         bool exist(item obj) {
-            for (Element *cur = head; cur != NULL; cur = cur->next)
+            for (Element *cur = head; cur != NULL; cur = cur->prev)
                 if (cur->data == obj)
                         return true;
 
