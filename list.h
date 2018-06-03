@@ -72,9 +72,11 @@ private:
                     }
                 else
                     {
-                        Element *prev = find(index - 1);
-                        Element *new_el = new Element (obj, find(index) );
-                        prev->next = new_el;
+                        Element *prior = find(index - 1);
+                        Element *current = prior->next;
+
+                        Element *new_el = new Element (obj, current);
+                        prior->next = new_el;
                     }
 
                 ++size;
@@ -110,19 +112,16 @@ private:
                 if (index < 1 || index > size)
                         throw "ListException: remove - access error";
 
-                Element *cur;
+                Element *cur = find(index);
 
                 if (index == 1)
                     {
-                        cur = head;
                         head = head->next;
                     }
                 else
                     {
-                        cur = find(index);
-
-                        Element *prev = find(index - 1);
-                        prev->next = cur->next;
+                        Element *prior = find(index - 1);
+                        prior->next = cur->next;
                     }
 
                 delete cur;
