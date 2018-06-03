@@ -68,7 +68,7 @@ private:
                 if (index < 1 || index > size + 1)
                         throw "DoubleLinkedList: insert - access error";
 
-                if (empty() )
+                if ( empty() )
                 {
                     Element *new_el = new Element (obj, NULL, NULL);
                     head = new_el;
@@ -86,9 +86,9 @@ private:
                     {
                         if (index == size + 1)
                         {
-                                        Element *new_el = new Element (obj, NULL, tail);
-                                        tail->next = new_el;
-                                        tail = new_el;
+                            Element *new_el = new Element (obj, NULL, tail);
+                            tail->next = new_el;
+                            tail = new_el;
                         }
                         else
                         {
