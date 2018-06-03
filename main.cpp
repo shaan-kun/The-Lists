@@ -5,9 +5,14 @@
 using namespace std;
 
 #include "stack.h"
-#include "queue.cpp"
-#include "list.cpp"
-#include "double_linked_list.cpp"
+#include "queue.h"
+#include "list.h"
+#include "double_linked_list.h"
+
+/*
+    Задача: создать список только уникальных слов исходного текста
+    Реализация: стек, очередь, список в односвязной и двусвязной формах
+*/
 
 int main() {
     setlocale(LC_ALL, "rus");
@@ -17,18 +22,18 @@ int main() {
 
 
 
-    Stack <string> test_stack;
+    Stack <string> s;
 
     while (in.peek() != EOF) {
         string sub;
         in >> sub;
 
-        if (!test_stack.isExist(sub) )
-                test_stack.Push(sub);
+        if ( !s.exist(sub) )
+                s.push(sub);
     }
 
     out << "_____STACK_____" << endl;
-    test_stack.Print(out);
+    s.print(out);
     out << endl;
 
     in.clear();
@@ -36,18 +41,18 @@ int main() {
 
 
 
-    Queue <string> test_queue;
+    Queue <string> q;
 
     while (in.peek() != EOF) {
         string sub;
         in >> sub;
 
-        if (!test_queue.isExist(sub) )
-                test_queue.Push(sub);
+        if ( !q.exist(sub) )
+                q.push(sub);
     }
 
     out << "_____QUEUE_____" << endl;
-    test_queue.Print(out);
+    q.print(out);
     out << endl;
 
     in.clear();
@@ -55,18 +60,20 @@ int main() {
 
 
 
-    List <string> test_list;
+    List <string> l;
+
+    int i = 1;
 
     while (in.peek() != EOF) {
         string sub;
         in >> sub;
 
-        if (!test_list.isExist(sub) )
-                test_list.Insert(1, sub);
+        if ( !l.exist(sub) )
+                l.insert(i++, sub);
     }
 
     out << "_____LIST_____" << endl;
-    test_list.Print(out);
+    l.print(out);
     out << endl;
 
     in.clear();
@@ -74,21 +81,20 @@ int main() {
 
 
 
-    DoubleLinkedList <string> test_dl_list;
+    DoubleLinkedList <string> dll;
+
+    i = 1;
 
     while (in.peek() != EOF) {
         string sub;
         in >> sub;
 
-        if (!test_dl_list.isExist(sub) )
-                test_dl_list.InsertLeft(1, sub);
+        if ( !dll.exist(sub) )
+                dll.insert(i++, sub);
     }
 
-    out << "_____DoubleLinkedList_____" << endl;
-    test_dl_list.PrintLeftToRight(out);
-    out << endl;
-
-
+    out << "_____DOUBLE_LINKED_LIST_____" << endl;
+    dll.printLeftToRight(out);
 
     in.close();
     out.close();
