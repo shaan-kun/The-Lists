@@ -39,22 +39,22 @@ class Queue {
             return head == NULL;
         }
 
-        // поместить элемент в очередь
+        // помещает элемент в очередь
         void push(item obj) {
-            if (head == NULL)
-                {
-                    tail = new Element(obj);
-                    head = tail;
-                }
+            if ( empty() )
+            {
+                tail = new Element(obj);
+                head = tail;
+            }
             else
-                {
-                    Element *cur = tail;
-                    tail = new Element(obj);
-                    cur->next = tail;
-                }
+            {
+                Element *cur = tail;
+                tail = new Element(obj);
+                cur->next = tail;
+            }
         }
 
-        // взять первый элемент из очереди
+        // забирает первый элемент из очереди
         item get() {
             try
             {
@@ -79,7 +79,7 @@ class Queue {
             }
         }
 
-        // просмотреть первый элемент в очереди
+        // возвращает первый элемент очереди
         item view() {
             try
             {
@@ -94,13 +94,13 @@ class Queue {
             }
         }
 
-        // вывести на экран содержимое очереди
+        // выводит на экран содержимое очереди
         void show() {
             for (Element *cur = head; cur != NULL; cur = cur->next)
                     std::cout << cur->data << " ";
         }
 
-        // вывести в файл содержимое очереди
+        // выводит в файл содержимое очереди
         void print(std::ofstream &out) {
             for (Element *cur = head; cur != NULL; cur = cur->next)
                     out << cur->data << " ";
