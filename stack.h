@@ -38,12 +38,12 @@ class Stack {
             return head == NULL;
         }
 
-        // поместить элемент в стек
+        // помещает элемент в стек
         void push(item obj) {
             head = new Element (obj, head);
         }
 
-        // взять верхний элемент из стека
+        // забирает верхний элемент из стека
         item get() {
             try
             {
@@ -65,7 +65,7 @@ class Stack {
             }
         }
 
-        // просмотреть верхний элемент стека
+        // возвращает верхний элемент стека
         item view() {
             try
             {
@@ -80,13 +80,13 @@ class Stack {
             }
         }
 
-        // вывести на экран содержимое стека
+        // выводит на экран содержимое стека
         void show() {
             for (Element *cur = head; cur != NULL; cur = cur->prev)
                     std::cout << cur->data << " ";
         }
 
-        // вывести в файл содержимое стека
+        // выводит в файл содержимое стека
         void print(std::ofstream &out) {
             for (Element *cur = head; cur != NULL; cur = cur->prev)
                     out << cur->data << " ";
